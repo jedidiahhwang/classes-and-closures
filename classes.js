@@ -109,9 +109,7 @@ class ProgressiveManager extends Manager {
     this.bonus = 0;
   }
 
-  hire () {
-    super.hire();
-    
+  updateTitle () {
     if (this.reports.length >= 1 && this.reports <= 3) {
       this.title = "Barely Manager";
     } else if (this.reports.length >= 4 && this.reports.length <= 10) {
@@ -125,9 +123,15 @@ class ProgressiveManager extends Manager {
     }
   }
 
+  hire () {
+    super.hire();
+    this.updateTitle();
+  }
+
   fire (index) {
     super.fire(index);
     this.bonus += 100;
+    this.updateTitle();
   }
 }
 
